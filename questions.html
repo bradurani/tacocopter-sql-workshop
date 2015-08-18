@@ -1,0 +1,179 @@
+
+<h3>Single Table:</h3>
+
+Q: Return all rows from the <code>cities</code> table<br/>
+A: <code>SELECT * FROM cities;</code>
+<br/>
+</br>
+
+Q: Return all rows from the <code>stores</code> table<br/>
+A: <code>SELECT * FROM stores;</code>
+<br/>
+<br/>
+
+Q: Return all rows from the <code>salsas</code> table<br/>
+A: <code>SELECT * FROM salsas;</code>
+<br/>
+<br/>
+
+Q: Return all rows from the <code>tacos</code> table<br/>
+A: <code>SELECT * FROM tacos;</code>
+<br/>
+<br/>
+
+<h3>Specifying Fields</h3>
+Q: Return <code>name</code> from the <code>salsas</code> table<br/>
+A: <code>SELECT name FROM salsas;</code>
+<br/>
+<br/>
+
+Q: Return <code>name</code> and <code>zagat_rating</code> from the <code>stores</code> table<br/>
+A: <code>SELECT name, zagat_rating FROM stores;</code>
+<br/>
+<br/>
+
+Q: Return <code>name</code> and <code>vegetarian</code> from the <code>tacos</code> table<br/>
+A: <code>SELECT name, vegetarian FROM tacos;</code>
+<br/>
+<br/>
+
+Q: Return <code>name</code> and <code>allows_drones</code> from the <code>cities</code> table<br/>
+A: <code>SELECT name, allows_drones FROM cities;</code>
+<br/>
+<br/>
+
+<h3>Filtering</h3>
+
+Q: Return all fields from the <code>cities</code> table for cities that allow drones<br/>
+A: <code>SELECT * FROM cities WHERE allows_drones = true;</code>
+<br/>
+<br/>
+
+Q: Return all fields from the <code>stores</code> table for stores with a Zagat rating greater than 7<br/>
+A: <code>SELECT * FROM stores WHERE zagat_rating > 7;</code>
+<br/>
+<br/>
+
+Q: Return <code>name</code> from the <code>stores</code> table for stores with a Zagat rating greater than or equal to 8<br/>
+A: <code>SELECT name FROM stores WHERE zagat_rating >= 8;</code>
+<br/>
+<br/>
+
+Q: Return <code>name</code> from the <code>tacos</code> table for vegetarian tacos<br/>
+A: <code>SELECT name FROM tacos WHERE vegetarian=true;</code>
+<br/>
+<br/>
+
+Q: Return <code>id</code> and <code>name</code> from the <code>stores</code> table for stores that have a Zagat rating less than 5 and don&apos;t serve beer<br/>
+A: <code>SELECT id, name FROM stores WHERE zagat_rating < 5 AND serves_beer = false;</code>
+<br/>
+<br/>
+
+Q: Return <code>id</code> and <code>name</code> from the <code>stores</code> table for stores that have a Zagat rating less than 5 and don&apos;t serve beer<br/>
+A: <code>SELECT id, name FROM stores WHERE zagat_rating < 5 AND serves_beer = false;</code>
+<br/>
+<br/>
+
+Q: Return <code>name</code> and <code>zagat_rating</code> from <code>stores</code> for stores that have a Zagat rating greater than 7 or serve beer<br/>
+A: <code>SELECT name, zagat_rating FROM stores WHERE zagat_rating > 7 OR serves_beer = false;</code>
+<br/>
+<br/>
+
+Q: Return <code>name</code> and <code>zagat_rating</code> from <code>stores</code> for stores that have either have a Zagat rating greater than 8, or have a Zagat rating greater than 5 and serve beer<br/>
+A: <code>SELECT name, zagat_rating FROM stores WHERE zagat_rating > 8 OR (zagat_rating > 5 AND serves_beer = true);</code>
+<br/>
+<br/>
+
+Q: Return <code>name</code>, <code>zagat_rating</code>, and <code>serves_beer</code> from <code>stores</code> for stores that have either have a Zagat rating greater than 8, or have a Zagat rating greater than 5 and serve beer<br/>
+A: <code>SELECT name, zagat_rating, serves_beer FROM stores WHERE zagat_rating > 8 OR (zagat_rating > 5 AND serves_beer = true);</code>
+<br/>
+<br/>
+
+Q: Return <code>name</code>, <code>zagat_rating</code>, and <code>serves_beer</code> from <code>stores</code> for stores that have either have a Zagat rating greater less than 5, or have a Zagat rating less than than 7 and don&apos;t serve beer<br/>
+A: <code>SELECT name, zagat_rating, services_beer FROM stores WHERE zagat_rating < 5 OR (zagat_rating < 7 AND serves_beer = false);</code>
+<br/>
+<br/>
+
+
+
+
+City and number of stores
+City and highest rated store
+Store and price of taco bonanza
+Stores with Chile de Arbol Salsa
+Stores with Al Pastor and Chile de Arbol Salsa
+Stores with Al Pastor and Zagat rating > 9 and and Chile de Arbol Salsa 
+Stores with Al Pastor and Zagat rating > 9 and Chile de Arbol Salsa spicy > 9
+Stores with vegetarian tacos
+Store and has vegetarian
+Stores with vegetarian taco less than $5
+Stores with vegetarian taco with Al Pastor and Zagat rating > 9 and Chile de Arbol Salsa 
+Stores with vegetarian taco and Al Pastor with price < 4
+Stores with vegetarian taco with price < 4 and Al Pastor with price < 4
+Stores with vegetarian taco with price < 4 and Al Pastor with price < 4 in Carpinteria
+Price of most expensive taco by city
+Price and name of most expensive taco by city
+Rating of highest rated store by city
+Rating and name of highest rated store by city
+Store and has vegetarian
+All stores and ratings
+City and number of stores having greater than 5 stores
+store name and price of taco bonanza for stores that sell a Carne Asada
+store name and price of taco bonanza for stores that sell a Carne Asada and Pico de Gallo
+List of stores with no tacos less than $5
+List of stores with no salsa spicier than 7
+List of stores in Montecito with no salsa spicier than 7
+List of stores in Montecito or Santa Barbara with no salsa spicier than 7
+List of cities, the rating and name of the highest rated and whether they have a vegetarian , in a drone area, a carne asada or a birria for less than $5, 2 or more salsas spicier than 9, and at least 6 tacos in the bonanza which is under $30
+List of stores, whether they are in drone friendly cities, whether they have vegetarian, whether they have salsa spicier than 9, whether they have beef (birria or carne asada)
+List of tacos with store and city of cheapest one
+Stores that are only vegetarian
+Count of vegetarian by city
+Cities where the best store is vegetarian
+With name
+Cities with no stores that serve beer
+City with no stores that serve beer
+City where all stores are rated less than 5
+Vegetarian store with the most expensive bonanza
+City with most stores
+grouped by rating, city and count
+Stores with the same name
+Stores with the same name and the same rating
+Stores with the same name and different ratings
+Stores with same name in different cities
+Cities which have a store rated 10
+Cities with store count order by most
+Store with highest average price per taco and avg
+At what store did Brad eat tacos next to Conan O'Brian
+What stores have salsa de pina
+What's the only salsa that's never hotter than 3
+What's the only city without a store serving Pico de Gallo
+What's the only chain to have its own salsa?
+Cities with a chain
+Stores with ⅘ salsas in common :)
+Store # of tacos cheaper / more expensive, store # of tacos cheaper / more expensive
+Chain store with special taco and salsa
+Chain store with no custom tacos
+Stores where all tacos same price
+Stores where all tacos different price
+Store with same menu at different prices
+Tacos at stores with same menu at different prices
+Tacos at store with same menu at different prices
+Price of bonanza at largest selection
+Price of Bonanza at highest price
+List of tacos at largest selection
+List of tacos at highest bonanza price
+What salsas are not served in Goletta
+2 stores with same tacos and 100% different tacos
+2 stores same tacos same salsas
+2 stores same tacos # of salsas in common
+stores with different tacos, same salsas
+What stores has spiciest pico de gallo?
+Which stores have on avg spiciest
+Mildest tomatillo
+Same salsas at same spices
+Same salsas at different spiciness
+In same cities,
+In different cities
+How many different spicesses of pico are there with count
+
