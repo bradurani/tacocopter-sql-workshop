@@ -1,96 +1,290 @@
 
 <h3>Single Table:</h3>
 
-Q: Return all rows from the <code>cities</code> table<br/>
+Q: All rows from the <code>cities</code> table<br/>
 A: <code>SELECT * FROM cities;</code>
 <br/>
 </br>
 
-Q: Return all rows from the <code>stores</code> table<br/>
+Q: All rows from the <code>stores</code> table<br/>
 A: <code>SELECT * FROM stores;</code>
 <br/>
 <br/>
 
-Q: Return all rows from the <code>salsas</code> table<br/>
+Q: All rows from the <code>salsas</code> table<br/>
 A: <code>SELECT * FROM salsas;</code>
 <br/>
 <br/>
 
-Q: Return all rows from the <code>tacos</code> table<br/>
+Q: All rows from the <code>tacos</code> table<br/>
 A: <code>SELECT * FROM tacos;</code>
 <br/>
 <br/>
 
 <h3>Specifying Fields</h3>
-Q: Return <code>name</code> from the <code>salsas</code> table<br/>
+Q: <code>name</code> from the <code>salsas</code> table<br/>
 A: <code>SELECT name FROM salsas;</code>
 <br/>
 <br/>
 
-Q: Return <code>name</code> and <code>zagat_rating</code> from the <code>stores</code> table<br/>
+Q: <code>name</code> and <code>zagat_rating</code> from the <code>stores</code> table<br/>
 A: <code>SELECT name, zagat_rating FROM stores;</code>
 <br/>
 <br/>
 
-Q: Return <code>name</code> and <code>vegetarian</code> from the <code>tacos</code> table<br/>
+Q: <code>name</code> and <code>vegetarian</code> from the <code>tacos</code> table<br/>
 A: <code>SELECT name, vegetarian FROM tacos;</code>
 <br/>
 <br/>
 
-Q: Return <code>name</code> and <code>allows_drones</code> from the <code>cities</code> table<br/>
+Q: <code>name</code> and <code>allows_drones</code> from the <code>cities</code> table<br/>
 A: <code>SELECT name, allows_drones FROM cities;</code>
 <br/>
 <br/>
 
 <h3>Filtering</h3>
 
-Q: Return all fields from the <code>cities</code> table for cities that allow drones<br/>
+Q: All fields from the <code>cities</code> table for cities that allow drones<br/>
 A: <code>SELECT * FROM cities WHERE allows_drones = true;</code>
 <br/>
 <br/>
 
-Q: Return all fields from the <code>stores</code> table for stores with a Zagat rating greater than 7<br/>
+Q: All fields from the <code>stores</code> table for stores with a Zagat rating greater than 7<br/>
 A: <code>SELECT * FROM stores WHERE zagat_rating > 7;</code>
 <br/>
 <br/>
 
-Q: Return <code>name</code> from the <code>stores</code> table for stores with a Zagat rating greater than or equal to 8<br/>
+Q: <code>name</code> from the <code>stores</code> table for stores with a Zagat rating greater than or equal to 8<br/>
 A: <code>SELECT name FROM stores WHERE zagat_rating >= 8;</code>
 <br/>
 <br/>
 
-Q: Return <code>name</code> from the <code>tacos</code> table for vegetarian tacos<br/>
+Q: <code>name</code> from the <code>tacos</code> table for vegetarian tacos<br/>
 A: <code>SELECT name FROM tacos WHERE vegetarian=true;</code>
 <br/>
 <br/>
 
-Q: Return <code>id</code> and <code>name</code> from the <code>stores</code> table for stores that have a Zagat rating less than 5 and don&apos;t serve beer<br/>
-A: <code>SELECT id, name FROM stores WHERE zagat_rating < 5 AND serves_beer = false;</code>
+Q: <code>id</code> and <code>name</code> from the <code>stores</code> table for stores that have a Zagat rating less than 5 and don&apos;t serve beer<br/>
+A: <code>SELECT id, name FROM stores WHERE zagat_rating < 5 AND sells_beer = false;</code>
 <br/>
 <br/>
 
-Q: Return <code>id</code> and <code>name</code> from the <code>stores</code> table for stores that have a Zagat rating less than 5 and don&apos;t serve beer<br/>
-A: <code>SELECT id, name FROM stores WHERE zagat_rating < 5 AND serves_beer = false;</code>
+Q: <code>id</code> and <code>name</code> from the <code>stores</code> table for stores that have a Zagat rating less than 5 and don&apos;t serve beer<br/>
+A: <code>SELECT id, name FROM stores WHERE zagat_rating < 5 AND sells_beer = false;</code>
 <br/>
 <br/>
 
-Q: Return <code>name</code> and <code>zagat_rating</code> from <code>stores</code> for stores that have a Zagat rating greater than 7 or serve beer<br/>
-A: <code>SELECT name, zagat_rating FROM stores WHERE zagat_rating > 7 OR serves_beer = false;</code>
+Q: <code>name</code> and <code>zagat_rating</code> from <code>stores</code> for stores that have a Zagat rating greater than 7 or serve beer<br/>
+A: <code>SELECT name, zagat_rating FROM stores WHERE zagat_rating > 7 OR sells_beer = false;</code>
 <br/>
 <br/>
 
-Q: Return <code>name</code> and <code>zagat_rating</code> from <code>stores</code> for stores that have either have a Zagat rating greater than 8, or have a Zagat rating greater than 5 and serve beer<br/>
-A: <code>SELECT name, zagat_rating FROM stores WHERE zagat_rating > 8 OR (zagat_rating > 5 AND serves_beer = true);</code>
+Q: <code>name</code> and <code>zagat_rating</code> from <code>stores</code> for stores that have either have a Zagat rating greater than 8, or have a Zagat rating greater than 5 and serve beer<br/>
+A: <code>SELECT name, zagat_rating FROM stores WHERE zagat_rating > 8 OR (zagat_rating > 5 AND sells_beer = true);</code>
 <br/>
 <br/>
 
-Q: Return <code>name</code>, <code>zagat_rating</code>, and <code>serves_beer</code> from <code>stores</code> for stores that have either have a Zagat rating greater than 8, or have a Zagat rating greater than 5 and serve beer<br/>
-A: <code>SELECT name, zagat_rating, serves_beer FROM stores WHERE zagat_rating > 8 OR (zagat_rating > 5 AND serves_beer = true);</code>
+
+Q: <code>name</code>, <code>zagat_rating</code>, and <code>sells_beer</code> from <code>stores</code> for stores that have either have a Zagat rating less than 5, or have a Zagat rating less than than 7 and don&apos;t serve beer<br/>
+A: <code>
+      SELECT name, zagat_rating, services_beer 
+      FROM stores 
+      WHERE zagat_rating < 5 
+      OR (zagat_rating < 7 AND sells_beer = false);</code>
 <br/>
 <br/>
 
-Q: Return <code>name</code>, <code>zagat_rating</code>, and <code>serves_beer</code> from <code>stores</code> for stores that have either have a Zagat rating greater less than 5, or have a Zagat rating less than than 7 and don&apos;t serve beer<br/>
-A: <code>SELECT name, zagat_rating, services_beer FROM stores WHERE zagat_rating < 5 OR (zagat_rating < 7 AND serves_beer = false);</code>
+Q: All fields from <code>salsas</code> that have a spiciness between 5 and 7<br/>
+A: <code>
+    SELECT * 
+    FROM salsas 
+    WHERE spiciness 
+    BETWEEN 5 AND 7;</code>
+<br/>
+<br/>
+
+<h3>Inner Join</h3>
+
+Q: All fields from <code>stores</code> plus all fields from the <code>cities</code> they are in 
+<br/>
+A: <code>
+    SELECT * 
+    FROM stores 
+    JOIN cities 
+    ON stores.city_id = cities.id;</code>
+<br/>
+<br/>
+
+Q: <code>name</code> from <code>stores</code> and <code>allows_drones</code> from the city they are in<br/>
+A: <code>
+    SELECT stores.name, cities.allows_drones 
+    FROM stores 
+    JOIN cities 
+    ON stores.city_id = cities.id;</code>
+<br/>
+<br/>
+
+Q: All fields from <code>cities</code> plus all fields from <code>stores</code> for all stores 
+<br/>
+A: <code>
+    SELECT * 
+    FROM cities 
+    JOIN stores 
+    ON cities.id = stores.city_id;
+   </code>
+<br/>
+<br/>
+
+Q: <code>name</code> from <code>cites</code> as <code>city_name</code> and <code>name</code> from <code>stores</code> as <code>store_name</code> for all stores <br/>
+A: <code>
+    SELECT cities.name as city_name, stores.name as store_name 
+    FROM cities 
+    JOIN stores 
+    ON cities.id = stores.city_id;
+  </code>
+<br/>
+<br/>
+
+Q: All fields from <code>stores</code> plus all fields from the <code>cities</code> they are in for stores with a Zagat rating greater than 8
+<br/>
+A: <code>
+         SELECT * 
+         FROM stores 
+         JOIN cities ON stores.city_id = cities.id 
+         WHERE stores.zagat_rating > 8;
+   </code>
+<br/>
+<br/>
+
+Q: All fields from <code>stores</code> plus all fields from the <code>cities</code> they are in for cities that allow drones
+<br/>
+A: <code>
+      SELECT * 
+      FROM stores 
+      JOIN cities ON stores.city_id = cities.id 
+      WHERE cities.allows_drones = true;
+   </code>
+<br/>
+<br/>
+
+Q: All fields from <code>stores</code> plus all fields from the <code>cities</code> they are in for cities that allow drones and stores that serve beer and have a zagat rating greater than 7
+<br/>
+A: <code>SELECT * 
+         FROM stores 
+         JOIN cities ON stores.city_id = cities.id 
+         WHERE cities.allows_drones = true 
+         AND stores.sells_beer = true 
+         AND stores.zagat_rating > 6;</code>
+<br/>
+<br/>
+
+<h3>Many-to-Many</h3>
+
+Q: All fields from <code>stores</code> plus all fields from the <code>salsas</code> they serve
+<br/>
+A: <code>
+    SELECT stores.*, salsas.* 
+    FROM stores 
+    JOIN store_salsas ON stores.id = store_salsas.store_id
+    JOIN salsas ON store_salsas.salsa_id = salsas.id;
+  </code>
+<br/>
+<br/>
+
+Q: All fields from <code>stores</code> plus all fields from the <code>tacos</code> they serve
+<br/>
+A: <code>
+    SELECT stores.*, tacos.* 
+    FROM stores 
+    JOIN store_tacos ON stores.id = store_tacos.store_id
+    JOIN tacos ON store_tacos.salsa_id = tacos.id;
+  </code>
+<br/>
+<br/>
+
+Q: All fields from <code>stores</code> plus all fields from the <code>tacos</code> they serve if they're vegetarian
+<br/>
+A: <code>
+    SELECT stores.*, tacos.* 
+    FROM stores 
+    JOIN store_tacos ON stores.id = store_tacos.store_id
+    JOIN tacos ON store_tacos.salsa_id = tacos.id
+    WHERE tacos.vegetarian = true;
+  </code>
+<br/>
+<br/>
+
+Q: All fields from <code>stores</code> plus all fields from the <code>salsas</code> they serve if the store sells beer
+<br/>
+A: <code>
+    SELECT stores.*, salsas.* 
+    FROM stores 
+    JOIN store_salsas ON stores.id = store_salsas.store_id
+    JOIN salsas ON store_salsas.salsa_id = salsas.id
+    WHERE stores.sells_beer = true;
+  </code>
+<br/>
+<br/>
+
+Q: All fields from <code>stores</code> plus all fields from the <code>salsas</code> they serve if the spiciness is 8
+<br/>
+A: <code>
+    SELECT stores.*, salsas.* 
+    FROM stores 
+    JOIN store_salsas ON stores.id = store_salsas.store_id
+    JOIN salsas ON store_salsas.salsa_id = salsas.id
+    WHERE store_salsas.spiciness = 8;
+  </code>
+<br/>
+<br/>
+
+Q: name from <code>stores</code>, name from <code>tacos</code>, and price
+<br/>
+A: <code>
+    SELECT stores.name, tacos.name, store_tacos.price 
+    FROM stores 
+    JOIN store_tacos ON stores.id = store_tacos.store_id
+    JOIN tacos ON store_tacos.taco_id = tacos.id;
+  </code>
+<br/>
+<br/>
+
+Q: name from <code>stores</code>, name from <code>tacos</code>, and price
+<br/>
+A: <code>
+    SELECT stores.name, tacos.name, store_tacos.price 
+    FROM stores 
+    JOIN store_tacos ON stores.id = store_tacos.store_id
+    JOIN tacos ON store_tacos.taco_id = tacos.id;
+  </code>
+<br/>
+<br/>
+
+Q: name from <code>stores</code>, name from <code>tacos</code>, and price where the store sells beer, the taco is not vegetarian and the price is less $3.50
+<br/>
+A: <code>
+    SELECT stores.name, tacos.name, store_tacos.price 
+    FROM stores 
+    JOIN store_tacos ON stores.id = store_tacos.store_id
+    JOIN tacos ON store_tacos.taco_id = tacos.id
+    WHERE stores.sells_beer = true
+    AND tacos.vegetarian = false
+    AND store_tacos.price < 3.50;
+  </code>
+<br/>
+<br/>
+
+Q: name from <code>stores</code>, name from <code>cities</code>, name from <code>salsas</code>, and spiciness where the city allows drones and the salsa is between 4 AND 6
+<br/>
+A: <code>
+    SELECT stores.name, cities.name, salsas.name, store_salsas.spiciness 
+    FROM stores 
+    JOIN cities ON stores.city_id = cities.id
+    JOIN store_salsas ON stores.id = store_salsas.store_id
+    JOIN salsas ON store_salsas.salsa_id = salsas.id
+    WHERE cities.allows_drones = true
+    AND store_salsas.spiciness  BETWEEN 4 AND 6;
+  </code>
 <br/>
 <br/>
 

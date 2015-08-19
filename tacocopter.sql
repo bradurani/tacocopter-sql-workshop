@@ -33,7 +33,7 @@ BEGIN;
     id serial PRIMARY KEY,
     store_id int REFERENCES stores,
     taco_id int REFERENCES tacos,
-    price money
+    price numeric(6, 2)
   );
 
   CREATE TABLE salsas
@@ -51,7 +51,7 @@ BEGIN;
   );
 
   INSERT INTO cities (id, name, allows_drones) VALUES
-  (1, 'Goletta', true),
+  (1, 'Goleta', true),
   (2, 'Santa Barbara', true),
   (3, 'Montecito', false),
   (4, 'Summerland', false),
@@ -61,7 +61,7 @@ BEGIN;
   INSERT INTO stores (id, name, city_id, sells_beer, zagat_rating) VALUES
   --1. Goletta
   (1, 'Juan''s Tacos', 1, true, 6),
-  (2, 'Tacos Del Gato', 1, false, 5),
+  (2, 'Tacos Del Gato', 1, true, 5),
   (3, 'Jeanette''s Tacos', 1, false, 8), --vegetarian
   --2. Santa Barbara
   (4, 'Lily''s Tacos', 2, false, 9),
