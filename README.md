@@ -13,5 +13,5 @@ In a different tab open <a href="https://raw.githubusercontent.com/bradurani/tac
 Select the entire contents of this file, copy it and paste it into schema panel on SQL Fiddle:<br/>
 <img src="https://github.com/bradurani/tacocopter-sql-workshop/blob/master/images/paste_sql.png"/>
 <br/>
-press the 'Build Schema' button. You should see a <code>schema ready</code> message
+press the 'Build Schema' button. You should see a <code>schema ready</code> message. You are now ready to start writting SQL in the "Run SQL" pane
 
