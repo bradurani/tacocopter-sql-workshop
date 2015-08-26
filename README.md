@@ -11,6 +11,7 @@ Switch to Postgres 9.3:<br/>
 In a different tab open <a href="https://raw.githubusercontent.com/bradurani/tacocopter-sql-workshop/master/tacocopter.sql"/>https://raw.githubusercontent.com/bradurani/tacocopter-sql-workshop/master/tacocopter.sql</a>
 <br/>
 Select the entire contents of this file, copy it and paste it into schema panel on SQL Fiddle:<br/>
-<a href="https://github.com/bradurani/tacocopter-sql-workshop/blob/master/images/paste_sql.png"/>
+<img src="https://github.com/bradurani/tacocopter-sql-workshop/blob/master/images/paste_sql.png"/>
 <br/>
+press the 'Build Schema' button. You should see a <code>schema ready</code> message
 
