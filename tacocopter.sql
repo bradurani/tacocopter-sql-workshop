@@ -1,8 +1,3 @@
-\c postgres
-DROP DATABASE IF EXISTS tacocopter;
-CREATE DATABASE tacocopter;
-\c tacocopter
-
 BEGIN;
 
   CREATE TABLE cities
