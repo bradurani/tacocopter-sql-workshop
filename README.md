@@ -29,7 +29,7 @@ From inside the tacocopter directory, open psql:
 cd ~/tacocopter-sql-workshop
 psql -U postgres
 ```
-In the psql terminal, run these 4 lines separately:
+In the psql terminal, run these 4 lines <i>separately</i>:
 ```
 \c postgres
 DROP DATABASE IF EXISTS tacocopter;
@@ -39,8 +39,11 @@ CREATE DATABASE tacocopter;
 Your prompt should now be `tacocopter=#`<br/>
 Run the following command to build the schema:
 ```
-
-Open the tacocopter directory, create a test SQL file and open postgres
+\i tacocopter.sql
+```
+You are now ready to start querying.
+<br/><br/>
+To run SQL from a text editor, create a test SQL file in the tacocopter directory:
 ```
 cd ~/tacocopter-sql-workshop
 touch test.sql
@@ -49,4 +52,9 @@ Open the `test.sql` file in your favorite code editor. Add the line:
 ```
 SELECT * FROM stores;
 ```
-Don't forget the semi-colon<br>
+Don't forget the semi-colon ;)<br>
+Switch back to the psql terminal and enter:
+```
+\i test.sql
+```
+Your query should run!
