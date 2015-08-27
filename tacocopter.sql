@@ -1,3 +1,8 @@
+-- \c postgres
+-- DROP DATABASE tacocopter;
+-- CREATE DATABASE tacocopter;
+-- \c tacocopter
+
 BEGIN;
 
   CREATE TABLE cities
@@ -14,6 +19,14 @@ BEGIN;
     city_id int REFERENCES cities,
     sells_beer boolean,
     zagat_rating int
+  );
+
+  CREATE TABLE car_washes
+  (
+    id serial PRIMARY KEY,
+    store_id int UNIQUE REFERENCES stores,
+    hot_wax boolean,
+    full_detail boolean
   );
 
   CREATE TABLE tacos
@@ -107,6 +120,12 @@ BEGIN;
   (7, 'Salsa Don Roge'),
   (8, 'Lily''s Devil Worship'),
   (9, 'Sweet Mango and Radish');
+
+  INSERT INTO car_washes(store_id, hot_wax, full_detail) VALUES
+  (1, true, false),
+  (9, false, false),
+  (11, true, true),
+  (17, true, true);
 
   INSERT INTO store_tacos (store_id, taco_id, price) VALUES
   --Goletta
