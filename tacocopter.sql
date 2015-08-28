@@ -1,7 +1,7 @@
--- \c postgres
--- DROP DATABASE tacocopter;
--- CREATE DATABASE tacocopter;
--- \c tacocopter
+\c postgres
+DROP DATABASE tacocopter;
+CREATE DATABASE tacocopter;
+\c tacocopter
 
 BEGIN;
 
@@ -102,7 +102,7 @@ BEGIN;
   (9, 'Chile Relleno', true),
   (10,'Veggie', true),
   (11,'The Green Monster', true), --Jeanette's special
-  (12,'Jeanette''s Hormigos', true), --Jeanette's special
+  (12,'Jeanette''s Mushrooms', true), --Jeanette's special
   (13,'Lilly''s Special', false), --Lilly's Special
   (14,'Lobster Alfredo', false), --Archibalds, all special
   (15,'Saffron Caviar', false),
