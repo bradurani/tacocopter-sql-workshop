@@ -1,7 +1,7 @@
-\c postgres
-DROP DATABASE tacocopter;
-CREATE DATABASE tacocopter;
-\c tacocopter
+-- \c postgres
+-- DROP DATABASE tacocopter;
+-- CREATE DATABASE tacocopter;
+-- \c tacocopter
 
 BEGIN;
 
