@@ -315,12 +315,12 @@ INSERT INTO store_salsas (store_id, salsa_id, spiciness) VALUES
   (1, 3, 6),
   (1, 5, 7),
   --16. Don Roge #2 -- same menu plus additional
-  (14, 1, 8),
-  (14, 2, 8),
-  (14, 3, 4), 
-  (14, 4, 7),
-  (14, 5, 9),
-  (14, 6, 2),
+  (16, 1, 8),
+  (16, 2, 8),
+  (16, 3, 4), 
+  (16, 4, 7),
+  (16, 5, 9),
+  (16, 6, 2),
   --17. Tri Tip Market --same menu different city
   (11, 1, 2), --mildest tomatillo
   (11, 3, 2),
