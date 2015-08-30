@@ -5,9 +5,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root controller: 'home', action: :index
 
-  resource :home
-  resource :connecting
-  resource :schema
+  get 'connecting' => 'connecting#index'
+  get 'schema' => 'schema#index'
   resources :questions
 
   # Example of regular route:
