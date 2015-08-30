@@ -5,14 +5,14 @@
 
 BEGIN;
 
-  CREATE TABLE cities
+  CREATE TABLE IF NOT EXISTS cities
   (
     id serial PRIMARY KEY,
     name varchar(255),
     allows_drones boolean
   );
 
-  CREATE TABLE stores
+  CREATE TABLE IF NOT EXISTS stores
   (
     id serial PRIMARY KEY,
     name varchar(255),
@@ -21,7 +21,7 @@ BEGIN;
     zagat_rating int
   );
 
-  CREATE TABLE car_washes
+  CREATE TABLE IF NOT EXISTS car_washes
   (
     id serial PRIMARY KEY,
     store_id int UNIQUE REFERENCES stores,
@@ -29,14 +29,14 @@ BEGIN;
     full_detail boolean
   );
 
-  CREATE TABLE tacos
+  CREATE TABLE IF NOT EXISTS tacos
   (
     id serial PRIMARY KEY,
     name varchar(255),
     vegetarian boolean
   );
 
-  CREATE TABLE store_tacos
+  CREATE TABLE IF NOT EXISTS store_tacos
   (
     id serial PRIMARY KEY,
     store_id int REFERENCES stores,
@@ -44,13 +44,13 @@ BEGIN;
     price numeric(6, 2)
   );
 
-  CREATE TABLE salsas
+  CREATE TABLE IF NOT EXISTS salsas
   (
     id serial PRIMARY KEY,
     name varchar(255)
   );
 
-  CREATE TABLE store_salsas
+  CREATE TABLE IF NOT EXISTS store_salsas
   (
     id serial PRIMARY KEY,
     store_id int REFERENCES stores,
