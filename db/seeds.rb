@@ -300,8 +300,20 @@ q.answers.create({ answer: 'SELECT stores.name
                   WHERE stores.id NOT IN
                   (SELECT store_id 
                    FROM car_washes);'})
-
-
+q = create_question 'Stores that don&apos;t serve and Al Pastor taco',
+"SELECT stores.*
+ FROM stores
+ LEFT JOIN store_tacos ON stores.id = store_tacos.store_id
+                       AND store_tacos.taco_id = 4
+WHERE store_tacos.id IS NULL;"
+q.answer.create!({answer: "SELECT *
+                           FROM stores 
+                           WHERE stores.id NOT IN (
+                             SELECT id
+                             FROM stores
+                             JOIN store_tacos ON stores.id = store_tacos.store_id
+                             WHERE store_tacos.taco_id = 4
+                           )"})
 
 #--Aggregating--
   
