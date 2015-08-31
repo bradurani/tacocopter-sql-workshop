@@ -1,9 +1,24 @@
 <h1>Questions</h1>
 
 <% @questions.each do |q| %>
-  <%= simple_format(q.question, class: 'question', sanitize: false) %>
-  
-  <% q.answers.each do |a| %>
-      <%= simple_format(a.answer, class: 'answer') %>
-  <% end %>
+  <div>
+    <span class='q'><%= q.id %>:&nbsp;</span>
+    <span class='question'><%= q.question.html_safe %></span>
+  </div>
+  <div class='output'>
+    <pre>
+<%= q.output.strip!.html_safe %>
+    </pre>
+  </div>
+  <div class='answer'>
+    <button class='show-answer'>Show Answer</button>
+    <% q.answers.each do |a| %>
+      <div class='answer-content'>
+        <%= a.answer.gsub("\n","<br/>").html_safe %>
+      </div>
+    <% end %>
+  </div>
+  <hr/>
+  <br/>
 <% end %>
+
