@@ -4,15 +4,24 @@
 -- \c tacocopter
 
 BEGIN;
+  DROP TABLE IF EXISTS store_salsas;
+  DROP TABLE IF EXISTS store_tacos;
+  DROP TABLE IF EXISTS car_washes;
+  DROP TABLE IF EXISTS stores;
+  DROP TABLE IF EXISTS cities;
+  DROP TABLE IF EXISTS tacos;
+  DROP TABLE IF EXISTS salsas;
 
-  CREATE TABLE IF NOT EXISTS cities
+  
+  CREATE TABLE cities
   (
     id serial PRIMARY KEY,
     name varchar(255),
     allows_drones boolean
   );
 
-  CREATE TABLE IF NOT EXISTS stores
+  
+  CREATE TABLE stores
   (
     id serial PRIMARY KEY,
     name varchar(255),
@@ -21,7 +30,8 @@ BEGIN;
     zagat_rating int
   );
 
-  CREATE TABLE IF NOT EXISTS car_washes
+  
+  CREATE TABLE car_washes
   (
     id serial PRIMARY KEY,
     store_id int UNIQUE REFERENCES stores,
@@ -29,14 +39,14 @@ BEGIN;
     full_detail boolean
   );
 
-  CREATE TABLE IF NOT EXISTS tacos
+  CREATE TABLE tacos
   (
     id serial PRIMARY KEY,
     name varchar(255),
     vegetarian boolean
   );
 
-  CREATE TABLE IF NOT EXISTS store_tacos
+  CREATE TABLE store_tacos
   (
     id serial PRIMARY KEY,
     store_id int REFERENCES stores,
@@ -44,13 +54,13 @@ BEGIN;
     price numeric(6, 2)
   );
 
-  CREATE TABLE IF NOT EXISTS salsas
+  CREATE TABLE salsas
   (
     id serial PRIMARY KEY,
     name varchar(255)
   );
 
-  CREATE TABLE IF NOT EXISTS store_salsas
+  CREATE TABLE store_salsas
   (
     id serial PRIMARY KEY,
     store_id int REFERENCES stores,

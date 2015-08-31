@@ -1,0 +1,9 @@
+<h1>Questions</h1>
+
+<% @questions.each do |q| %>
+  <%= simple_format(q.question, class: 'question', sanitize: false) %>
+  
+  <% q.answers.each do |a| %>
+      <%= simple_format(a.answer, class: 'answer') %>
+  <% end %>
+<% end %>
