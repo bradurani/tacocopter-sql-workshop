@@ -517,6 +517,39 @@ create_question 'List of stores with no salsa spicier than 7',
    WHERE store_salsas.spiciness > 7
  );"
 
+create_question 'List of stores in Montecito with no salsa spicier than 7',
+"SELECT stores.*
+ FROM stores
+ WHERE stores.id NOT IN (
+   SELECT stores.id
+   FROM stores
+   JOIN store_salsas ON stores.id = store_salsas.store_id
+   WHERE store_salsas.spiciness > 7
+)
+AND stores.city_id = 3;"
+
+create_question 'List of stores in Montecito or Santa Barbara with no salsa spicier than 7',
+"SELECT stores.*
+ FROM stores
+ WHERE stores.id NOT IN (
+   SELECT stores.id
+   FROM stores
+   JOIN store_salsas ON stores.id = store_salsas.store_id
+   WHERE store_salsas.spiciness > 7
+)
+AND stores.city_id IN (3, 2);"
+
+create_question 'Stores that are serve only vegetarian tacos',
+"SELECT *
+ FROM stores
+ WHERE stores.id NOT IN (
+   SELECT stores.id
+   FROM stores
+   JOIN store_tacos ON stores.id = store_tacos.store_id
+   JOIN tacos ON store_tacos.taco_id = tacos.id
+   WHERE tacos.vegetarian = false
+);"
+
 #--- Subselect in FROM ----
 
 create_question 'City name, store name and Zagat rating of store with highest rating by city',
@@ -557,37 +590,4 @@ create_question 'City name, store name, taco name and price of most expensive ta
    GROUP BY cities.id
 ) AS sub ON store_tacos.price = sub.highest_price
          AND cities.id = sub.city_id;"
-
-create_question 'List of stores in Montecito with no salsa spicier than 7',
-"SELECT stores.*
- FROM stores
- WHERE stores.id NOT IN (
-   SELECT stores.id
-   FROM stores
-   JOIN store_salsas ON stores.id = store_salsas.store_id
-   WHERE store_salsas.spiciness > 7
-)
-AND stores.city_id = 3;"
-
-create_question 'List of stores in Montecito or Santa Barbara with no salsa spicier than 7',
-"SELECT stores.*
- FROM stores
- WHERE stores.id NOT IN (
-   SELECT stores.id
-   FROM stores
-   JOIN store_salsas ON stores.id = store_salsas.store_id
-   WHERE store_salsas.spiciness > 7
-)
-AND stores.city_id IN (3, 2);"
-
-create_question 'Stores that are serve only vegetarian tacos',
-"SELECT *
- FROM stores
- WHERE stores.id NOT IN (
-   SELECT stores.id
-   FROM stores
-   JOIN store_tacos ON stores.id = store_tacos.store_id
-   JOIN tacos ON store_tacos.taco_id = tacos.id
-   WHERE tacos.vegetarian = false
-);"
 
