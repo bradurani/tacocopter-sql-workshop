@@ -300,13 +300,13 @@ q.answers.create({ answer: 'SELECT stores.name
                   WHERE stores.id NOT IN
                   (SELECT store_id 
                    FROM car_washes);'})
-q = create_question 'Stores that don&apos;t serve and Al Pastor taco',
+q = create_question 'Stores that don&apos;t serve an Al Pastor taco',
 "SELECT stores.*
  FROM stores
  LEFT JOIN store_tacos ON stores.id = store_tacos.store_id
                        AND store_tacos.taco_id = 4
 WHERE store_tacos.id IS NULL;"
-q.answer.create!({answer: "SELECT *
+q.answers.create!({answer: "SELECT stores.*
                            FROM stores 
                            WHERE stores.id NOT IN (
                              SELECT id
