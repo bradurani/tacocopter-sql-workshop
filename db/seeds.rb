@@ -32,7 +32,6 @@ create_question "All rows from the <code>tacos</code> table",
 "SELECT * 
  FROM tacos;"
 
-#---specify name---
 create_question "<code>name</code> and <code>zagat_rating</code> from the <code>stores</code> table",
 "SELECT stores.name, stores.zagat_rating
  FROM stores;"
@@ -48,6 +47,8 @@ create_question '<code>name</code> from the <code>salsas</code> table',
 create_question '<code>name</code> and <code>allows_drones</code> from the <code>cities</code> table',
 "SELECT name, allows_drones 
  FROM cities;"
+
+#---Filtering---
 
 create_question 'All fields from the <code>cities</code> table for cities that allow drones',
 "SELECT * 
@@ -92,6 +93,11 @@ create_question 'All fields from <code>stores</code> that have a <code>zagat_rat
  FROM stores 
  WHERE zagat_rating 
  BETWEEN 5 AND 7;"
+
+ create_question 'All fields from tacos for Pollo and Carne Asada tacos',
+ "SELECT *
+  FROM tacos
+  WHERE tacos.id IN (1, 3)"
 
 #--inner join--
 
@@ -171,12 +177,12 @@ create_question 'All fields from <code>stores</code> plus all fields from the <c
  JOIN salsas ON store_salsas.salsa_id = salsas.id
  WHERE stores.sells_beer = true;"
 
-create_question 'All fields from <code>stores</code> plus all fields from the <code>salsas</code> they serve if the spiciness is 8',
+create_question 'All fields from <code>stores</code> plus all fields from the <code>salsas</code> they serve if the spiciness is 8 or 7',
 "SELECT stores.*, salsas.* 
  FROM stores 
  JOIN store_salsas ON stores.id = store_salsas.store_id
  JOIN salsas ON store_salsas.salsa_id = salsas.id
- WHERE store_salsas.spiciness = 8;"
+ WHERE store_salsas.spiciness IN (8, 7);"
 
 create_question '<code>name</code> from <code>stores</code>, <code>name</code> from <code>tacos</code>, and </code>price</code> where the store sells beer, the taco is not vegetarian and the price is less $3.50',
 "SELECT stores.name, tacos.name, store_tacos.price 
@@ -247,12 +253,66 @@ create_question 'Stores with vegetarian tacos and tacos < $3.50',
  JOIN tacos AS cheap ON store_tacos.taco_id = cheap.id
                      AND store_tacos.price < 3.50;"
 
+#--Left Join--
+create_question 'Store name and zagat rating for stores that have hot wax',
+"SELECT stores.name, stores.zagat_rating
+ FROM stores
+ JOIN car_washes ON stores.id = car_washes.store_id
+ WHERE car_washes.hot_wax = true;"
+
+create_question 'Store <code>name</code>, <code>sells_beer<code>, and <code>hot_wax<code> for all stores',
+"SELECT stores.name, stores.sells_beer, car_washes.hot_wax
+ FROM stores
+ LEFT JOIN car_washes ON stores.id = car_washes.store_id;"
+
+create_question 'Store <code>name</code>, city <code>name</code> and <code>hot_wax</code> for all stores',
+"SELECT stores.name, cities.name, car_washes.hot_wax
+ FROM stores
+ LEFT JOIN car_washes ON stores.id = car_washes.store_id
+ JOIN cities ON stores.city_id = cities.id;"
+
+create_question 'Store <code>name</code>, and spiciness of Pico de Gallo if they have it',
+"SELECT stores.name, store_salsas.spiciness
+ FROM stores
+ LEFT JOIN store_salsas ON stores.id = store_salsas.store_id
+                        AND store_salsas.salsa_id = 3;"
+
+create_question 'City <code>name</code> and <code>hot_wax</code> for all cities, even if they have no stores',
+"SELECT cities.name, car_washes.hot_wax
+ FROM cities 
+ LEFT JOIN stores ON cities.id = stores.city_id
+ LEFT JOIN car_washes ON stores.id = car_washes.store_id;"
+
+create_question 'Store <code>name</code>, <code>hot_wax</code> and price of Al Pastor taco if they have it',
+"SELECT stores.name, car_washes.hot_wax, store_tacos.price
+ FROM stores
+ LEFT JOIN car_washes ON stores.id = car_washes.store_id
+ LEFT JOIN store_tacos ON stores.id = store_tacos.store_id
+                       AND store_tacos.taco_id = 4;"
+
+q = create_question 'Store name for stores that don&apos;t have a car wash',
+"SELECT stores.name 
+ FROM stores
+ LEFT JOIN car_washes ON stores.id = car_washes.store_id
+ WHERE car_washes.id IS NULL;"
+q.answers.create({ answer: 'SELECT stores.name
+                  FROM stores
+                  WHERE stores.id NOT IN
+                  (SELECT store_id 
+                   FROM car_washes);'})
+
+
 
 #--Aggregating--
   
 create_question 'All rows from <code>cities</code> and number of stores',
 "SELECT cities.id, cities.name, COUNT(stores.*)
  FROM cities JOIN stores ON cities.id = stores.city_id
+ GROUP BY cities.id;"
+
+ create_question 'All rows from <code>cities</code> and number of stores including cities with zero',
+"SELECT cities.id, cities.name, COUNT(stores.*)
+ FROM cities LEFT JOIN stores ON cities.id = stores.city_id
  GROUP BY cities.id;"
 
 create_question '<code>id</code> and <code>name</code> from <code>cities</code> with highest Zagat rating and avgerage Zagat rating',
