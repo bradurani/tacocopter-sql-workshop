@@ -1,26 +1,10 @@
--- \c postgres
--- DROP DATABASE tacocopter;
--- CREATE DATABASE tacocopter;
--- \c tacocopter
-
 BEGIN;
-  DROP TABLE IF EXISTS store_salsas;
-  DROP TABLE IF EXISTS store_tacos;
-  DROP TABLE IF EXISTS car_washes;
-  DROP TABLE IF EXISTS stores;
-  DROP TABLE IF EXISTS cities;
-  DROP TABLE IF EXISTS tacos;
-  DROP TABLE IF EXISTS salsas;
-
-  
   CREATE TABLE cities
   (
     id serial PRIMARY KEY,
     name varchar(255),
     allows_drones boolean
   );
-
-  
   CREATE TABLE stores
   (
     id serial PRIMARY KEY,
@@ -29,8 +13,6 @@ BEGIN;
     sells_beer boolean,
     zagat_rating int
   );
-
-  
   CREATE TABLE car_washes
   (
     id serial PRIMARY KEY,
@@ -38,14 +20,12 @@ BEGIN;
     hot_wax boolean,
     full_detail boolean
   );
-
   CREATE TABLE tacos
   (
     id serial PRIMARY KEY,
     name varchar(255),
     vegetarian boolean
   );
-
   CREATE TABLE store_tacos
   (
     id serial PRIMARY KEY,
@@ -53,13 +33,11 @@ BEGIN;
     taco_id int REFERENCES tacos,
     price numeric(6, 2)
   );
-
   CREATE TABLE salsas
   (
     id serial PRIMARY KEY,
     name varchar(255)
   );
-
   CREATE TABLE store_salsas
   (
     id serial PRIMARY KEY,
@@ -67,7 +45,6 @@ BEGIN;
     salsa_id int REFERENCES tacos,
     spiciness int
   );
-
   INSERT INTO cities (id, name, allows_drones) VALUES
   (1, 'Goleta', true),
   (2, 'Santa Barbara', true),
@@ -75,31 +52,24 @@ BEGIN;
   (4, 'Summerland', false),
   (5, 'Carpinteria', true),
   (6, 'La Conchita', true);
-
   INSERT INTO stores (id, name, city_id, sells_beer, zagat_rating) VALUES
-  --1. Goletta
   (1, 'Juan''s Tacos', 1, true, 6),
   (2, 'Tacos Del Gato', 1, true, 5),
-  (3, 'Jeanette''s Tacos', 1, false, 8), --vegetarian
-  --2. Santa Barbara
+  (3, 'Jeanette''s Tacos', 1, false, 8),
   (4, 'Lily''s Tacos', 2, false, 9),
-  (5, 'Shivering Cactus Tacos', 2, true, 8), --vegetarian
+  (5, 'Shivering Cactus Tacos', 2, true, 8),
   (6, 'La Super Rica', 2, true, 10),
-  (7, 'Lily''s Tacos', 2, false, 8), --same name, same cities, different ratings
-  --3. Montecito #all rated lower than 7
+  (7, 'Lily''s Tacos', 2, false, 8),
   (8, 'California Market', 3, false, 3),
   (9, 'Dan''s Bait Shop', 3, false, 2),
-  (10, 'Archibald''s Bistro', 3, true, 6), --most expensive
-  --4. Summerland #none serving beer
+  (10, 'Archibald''s Bistro', 3, true, 6),
   (11, 'Tri Tip Market', 4, false, 8), 
-  --5 Carpinteria
   (12, 'Reyes Market', 5, false, 10),
   (13, 'Rincon Alteño', 5, false, 8),
   (14, 'Don Roge', 5, true, 9),
   (15, 'Beach Liquor', 5, false, 8),
-  (16, 'Don Roge', 5, true, 8), --same name, same cities, different ratings
-  (17, 'Tri Tip Market', 5, false, 8); --same name different cities
-
+  (16, 'Don Roge', 5, true, 8),
+  (17, 'Tri Tip Market', 5, false, 8)
   INSERT INTO tacos (id, name, vegetarian) VALUES
   (1, 'Carne Asada', false),
   (2, 'Birria', false), --beef
@@ -111,15 +81,14 @@ BEGIN;
   (8, 'Nopales', true),
   (9, 'Chile Relleno', true),
   (10,'Veggie', true),
-  (11,'The Green Monster', true), --Jeanette's special
-  (12,'Jeanette''s Mushrooms', true), --Jeanette's special
-  (13,'Lilly''s Special', false), --Lilly's Special
-  (14,'Lobster Alfredo', false), --Archibalds, all special
+  (11,'The Green Monster', true),
+  (12,'Jeanette''s Mushrooms', true),
+  (13,'Lilly''s Special', false),
+  (14,'Lobster Alfredo', false),
   (15,'Saffron Caviar', false),
   (16,'Fillet Mignon', false),
   (17,'Braised Artichoke', true),
   (18, 'Deep Fried Buffalo', false);
-
   INSERT INTO salsas (id, name) VALUES
   (1, 'Tomatillo Jalapeño'),
   (2, 'Chile de Arbol'),
@@ -130,7 +99,6 @@ BEGIN;
   (7, 'Salsa Don Roge'),
   (8, 'Lily''s Devil Worship'),
   (9, 'Sweet Mango and Radish');
-
   INSERT INTO car_washes(store_id, hot_wax, full_detail) VALUES
   (1, true, false),
   (9, false, false),
@@ -138,29 +106,23 @@ BEGIN;
   (17, true, true);
 
   INSERT INTO store_tacos (store_id, taco_id, price) VALUES
-  --Goletta
-  --1. Juan's tacos #all same price, no vegetarian
   (1, 1, 3.50),
   (1, 2, 3.50),
   (1, 3, 3.50),
   (1, 4, 3.50),
   (1, 5, 3.50),
   (1, 6, 3.50),
-  --2. Taco's Del Gato -- same menu different price
   (2, 1, 4.00),
   (2, 2, 3.75),
   (2, 3, 3.00),
   (2, 4, 3.50),
   (2, 5, 3.75),
   (2, 6, 3.50),
-  --3. Jeanette's Tacos
   (3, 8, 4.00),
   (3, 9, 4.00),
   (3, 10, 4.00),
   (3, 11, 4.50),
   (3, 12, 4.50),
-  --Santa Barbara
-  --4. Lilly's Tacos --all same price, 1 special
   (4, 1, 3.50),
   (4, 2, 3.50),
   (4, 3, 3.50),
@@ -168,16 +130,13 @@ BEGIN;
   (4, 5, 3.50),
   (4, 10, 3.50),
   (4, 13, 3.50),
-  --5. Shivering Cactus --vegetarian
   (5, 8, 3.25),
   (5, 9, 3.25),
   (5, 10, 3.25),
-  --6. La Super Rica
   (6, 1, 4.24),
   (6, 2, 4.50),
   (6, 3, 4.40),
   (6, 9, 5.00),
-  --7. Lilly's Tacos #2 --exact same menu
   (7, 1, 3.50),
   (7, 2, 3.50),
   (7, 3, 3.50),
@@ -185,25 +144,17 @@ BEGIN;
   (7, 5, 3.50),
   (7, 10, 3.50),
   (7, 13, 3.50),
-  --Montecito--
-  --8. California Market --no pork
   (8, 1, 4.00),
   (8, 2, 4.00),
   (8, 7, 4.00),
   (8, 8, 4.00),
-  --9. Dan's Bait Shop -- only 1 type (fish)
   (9, 7, 4.50),
-  --10. Archibald's Bistro
   (10, 14, 8.00),
   (10, 15, 9.00),
   (10, 16, 9.50),
   (10, 17, 10.00),
-  --Summerland
-  --11. Tri-Tip Market --only beef
   (11, 1, 4.50),
   (11, 2, 4.00),
-  --Carpinteria
-  --12. Reyes Market -Largest selection
   (12, 1, 3.50),
   (12, 2, 3.50),
   (12, 3, 3.50),
@@ -212,27 +163,23 @@ BEGIN;
   (12, 6, 3.50),
   (12, 7, 3.50),
   (12, 8, 3.50),
-  --13. Rincoln Alteno
   (13, 1, 2.95),
   (13, 2, 2.95),
   (13, 3, 2.95),
   (13, 10, 2.50),
-  --14. Don Roge #1 --largest selection of non vegetarian
-  (14, 2, 3.25), --only 1 beef
+  (14, 2, 3.25), 
   (14, 3, 3.25),
   (14, 4, 3.25),
   (14, 5, 3.25),
   (14, 6, 3.25),
   (14, 7, 3.25),
-  --15. Beach Liquor --same menu as Juan's different city
   (15, 1, 3.50),
   (15, 2, 3.50),
   (15, 3, 3.50),
   (15, 4, 3.50),
   (15, 5, 3.50),
   (15, 6, 3.50),
-  --16. Don Roge #2 -- same menu plus additional
-  (16, 2, 3.25), --only 1 beef
+  (16, 2, 3.25), 
   (16, 3, 3.25),
   (16, 4, 3.25),
   (16, 5, 3.25),
@@ -244,15 +191,7 @@ BEGIN;
   (17, 1, 4.50),
   (17, 2, 4.00);
 
-  -- (1, 'Tomatillo Jalapeño'),
-  -- (2, 'Chile de Arbol'),
-  -- (3, 'Pico de Gallo'),
-  -- (4, 'Salsa Roja'),
-  -- (5, 'Habeñero'),
-  -- (6, 'Salsa de Piña'),
-  -- (7, 'Salsa Don Roge'), --speciality Don Roge
-  -- (8, 'Lily''s Devil Worship'), -special to lilly
-  -- (9, 'Sweet Mango and Radish'); --no one has it
+
 INSERT INTO store_salsas (store_id, salsa_id, spiciness) VALUES
    --Goletta
   --1. Juan's tacos #all same price, no vegetarian
