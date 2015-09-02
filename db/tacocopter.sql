@@ -52,6 +52,7 @@ BEGIN;
   (4, 'Summerland', false),
   (5, 'Carpinteria', true),
   (6, 'La Conchita', true);
+
   INSERT INTO stores (id, name, city_id, sells_beer, zagat_rating) VALUES
   (1, 'Juan''s Tacos', 1, true, 6),
   (2, 'Tacos Del Gato', 1, true, 5),
@@ -69,7 +70,8 @@ BEGIN;
   (14, 'Don Roge', 5, true, 9),
   (15, 'Beach Liquor', 5, false, 8),
   (16, 'Don Roge', 5, true, 8),
-  (17, 'Tri Tip Market', 5, false, 8)
+  (17, 'Tri Tip Market', 5, false, 8);
+
   INSERT INTO tacos (id, name, vegetarian) VALUES
   (1, 'Carne Asada', false),
   (2, 'Birria', false), --beef
