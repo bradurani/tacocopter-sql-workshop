@@ -2,14 +2,8 @@
 
 <h2>Using pgAdmin</h2>
 
-<%= image_tag 'new_pg_admin.png', style: 'width: 500px;' %>
-<br/>
-<br/>
-<p>Scroll down to database doj4h4bhvjcg9</p><br/>
-<%= image_tag 'connect_pg_admin.png', style: 'width: 500px;' %>
-<br/>
-<hr/>
-<br/>
+
+
 <h2>Using SQL Fiddle</h2>
 
 <p>In a new tab, visit <a href='http://sqlfiddle.com'>http://sqlfiddle.com</a></p>
@@ -34,7 +28,7 @@ press the 'Build Schema' button. You should see a <code>schema ready</code> mess
 mkdir ~/tacocopter<br/>
 cd ~/tacocopter<br/>
 touch test.sql<br/>
-psql postgres://ydxmmkmfuwlvre:password-goes-here@ec2-54-83-58-191.compute-1.amazonaws.com:5432/doj4h4bhvjcg9
+psql -h 192.168.33.240 -U procore_db -d tacocopter
 </code><br/>
 <p>Open the <code>test.sql</code> file in your favorite code editor. Add the line:</p>
 <code>SELECT * FROM stores;</code>

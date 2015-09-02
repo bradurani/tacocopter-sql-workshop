@@ -76,41 +76,15 @@
 
 
 
-List of stores in Montecito or Santa Barbara with no salsa spicier than 7
-SELECT stores.*
-FROM stores
-WHERE stores.id NOT IN (
-  SELECT stores.id
-  FROM stores
-  JOIN store_salsas ON stores.id = store_salsas.store_id
-  WHERE store_salsas.spiciness > 7
-)
-AND stores.city_id IN (3, 2);
 
 
-Stores that are only vegetarian
-SELECT *
-FROM stores
-WHERE stores.id NOT IN (
-  SELECT stores.id
-  FROM stores
-  JOIN store_tacos ON stores.id = store_tacos.store_id
-  JOIN tacos ON store_tacos.taco_id = tacos.id
-  WHERE tacos.vegetarian = false
-);
 
-City name and count of vegetarian stores
-SELECT cities.name, COUNT(*)
-FROM stores
-JOIN cities ON stores.city_id = cities.id
-WHERE stores.id NOT IN (
-  SELECT stores.id
-  FROM stores
-  JOIN store_tacos ON stores.id = store_tacos.store_id
-  JOIN tacos ON store_tacos.taco_id = tacos.id
-  WHERE tacos.vegetarian = false
-)
-GROUP BY cities.id;
+
+
+
+
+
+
 
 
 Cities where the most highly rated store is vegetarian
