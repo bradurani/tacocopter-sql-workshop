@@ -1,9 +1,5 @@
 <h1>Connecting</h1>
 
-<h2>Using pgAdmin</h2>
-
-
-
 <h2>Using SQL Fiddle</h2>
 
 <p>In a new tab, visit <a href='http://sqlfiddle.com'>http://sqlfiddle.com</a></p>
@@ -22,17 +18,3 @@ press the 'Build Schema' button. You should see a <code>schema ready</code> mess
 <br/>
 <hr/>
 <br/>
-<h2>Using psql</h2>
-<p>While in the UDE terminal, run:</p>
-<code>
-mkdir ~/tacocopter<br/>
-cd ~/tacocopter<br/>
-touch test.sql<br/>
-psql -h 192.168.33.240 -U procore_db -d tacocopter
-</code><br/>
-<p>Open the <code>test.sql</code> file in your favorite code editor. Add the line:</p>
-<code>SELECT * FROM stores;</code>
-<p>Don't forget the semi-colon</p>
-<p>Switch back to the psql terminal and enter:</p>
-<code>\i test.sql</code>
-<p>Your query should run!</p>
