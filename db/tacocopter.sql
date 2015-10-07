@@ -74,7 +74,7 @@ BEGIN;
 
   INSERT INTO tacos (id, name, vegetarian) VALUES
   (1, 'Carne Asada', false),
-  (2, 'Birria', false), --beef
+  (2, 'Birria', false),
   (3, 'Pollo', false),
   (4, 'Al Pastor', false),
   (5, 'Carnitas', false),
