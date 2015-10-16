@@ -9,6 +9,12 @@ Rails.application.routes.draw do
   get 'schema' => 'schema#index'
   resources :questions
 
+  resources :tacos_salsas, only: :index
+
+  resources :stores, only: :index do
+    get 'search', on: :collection
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

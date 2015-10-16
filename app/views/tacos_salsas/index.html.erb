@@ -1,0 +1,23 @@
+<%= form_tag search_stores_path, method: :get do %>
+  <h1>Tacos</h1>
+  <div id="tacos">
+    <% @tacos.each do |taco| %>
+      <div class="taco">
+        <%= label_tag taco.name %>
+        <%= check_box_tag "taco_ids[]", taco.id %>
+      </div>
+    <% end %>
+  </div>
+
+  <h1>Salsas</h1>
+  <div id="salsas">
+    <% @salsas.each do |salsa| %>
+      <div class="salsa">
+        <%= label_tag salsa.name %>
+        <%= check_box_tag "salsa_ids[]", salsa.id %>
+      </div>
+    <% end %>
+  </div>
+
+  <p><%= submit_tag "Search" %></p>
+<% end %>

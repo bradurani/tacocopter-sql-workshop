@@ -23,57 +23,10 @@ ActiveRecord::Schema.define(version: 20150831035337) do
     t.datetime "updated_at"
   end
 
-  create_table "car_washes", force: :cascade do |t|
-    t.integer "store_id"
-    t.boolean "hot_wax"
-    t.boolean "full_detail"
-  end
-
-  add_index "car_washes", ["store_id"], name: "car_washes_store_id_key", unique: true, using: :btree
-
-  create_table "cities", force: :cascade do |t|
-    t.string  "name",          limit: 255
-    t.boolean "allows_drones"
-  end
-
   create_table "questions", force: :cascade do |t|
     t.text     "question"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "salsas", force: :cascade do |t|
-    t.string "name", limit: 255
-  end
-
-  create_table "store_salsas", force: :cascade do |t|
-    t.integer "store_id"
-    t.integer "salsa_id"
-    t.integer "spiciness"
-  end
-
-  create_table "store_tacos", force: :cascade do |t|
-    t.integer "store_id"
-    t.integer "taco_id"
-    t.decimal "price",    precision: 6, scale: 2
-  end
-
-  create_table "stores", force: :cascade do |t|
-    t.string  "name",         limit: 255
-    t.integer "city_id"
-    t.boolean "sells_beer"
-    t.integer "zagat_rating"
-  end
-
-  create_table "tacos", force: :cascade do |t|
-    t.string  "name",       limit: 255
-    t.boolean "vegetarian"
-  end
-
-  add_foreign_key "car_washes", "stores", name: "car_washes_store_id_fkey"
-  add_foreign_key "store_salsas", "stores", name: "store_salsas_store_id_fkey"
-  add_foreign_key "store_salsas", "tacos", column: "salsa_id", name: "store_salsas_salsa_id_fkey"
-  add_foreign_key "store_tacos", "stores", name: "store_tacos_store_id_fkey"
-  add_foreign_key "store_tacos", "tacos", name: "store_tacos_taco_id_fkey"
-  add_foreign_key "stores", "cities", name: "stores_city_id_fkey"
 end
