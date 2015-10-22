@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'connecting' => 'connecting#index'
   get 'schema' => 'schema#index'
   resources :questions
+  resources :coding_challenge, only: [:index]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
