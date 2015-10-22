@@ -1,10 +1,14 @@
 BEGIN;
+
+  DROP TABLE IF EXISTS cities CASCADE;
   CREATE TABLE cities
   (
     id serial PRIMARY KEY,
     name varchar(255),
     allows_drones boolean
   );
+
+  DROP TABLE IF EXISTS stores CASCADE;
   CREATE TABLE stores
   (
     id serial PRIMARY KEY,
@@ -13,6 +17,8 @@ BEGIN;
     sells_beer boolean,
     zagat_rating int
   );
+
+  DROP TABLE IF EXISTS car_washes CASCADE;
   CREATE TABLE car_washes
   (
     id serial PRIMARY KEY,
@@ -20,31 +26,40 @@ BEGIN;
     hot_wax boolean,
     full_detail boolean
   );
+
+  DROP TABLE IF EXISTS tacos CASCADE;
   CREATE TABLE tacos
   (
     id serial PRIMARY KEY,
     name varchar(255),
     vegetarian boolean
   );
-  CREATE TABLE store_tacos
+
+  DROP TABLE IF EXISTS stores_tacos CASCADE;
+  CREATE TABLE stores_tacos
   (
     id serial PRIMARY KEY,
     store_id int REFERENCES stores,
     taco_id int REFERENCES tacos,
     price numeric(6, 2)
   );
+
+  DROP TABLE IF EXISTS salsas CASCADE;
   CREATE TABLE salsas
   (
     id serial PRIMARY KEY,
     name varchar(255)
   );
-  CREATE TABLE store_salsas
+
+  DROP TABLE IF EXISTS stores_salsas CASCADE;
+  CREATE TABLE stores_salsas
   (
     id serial PRIMARY KEY,
     store_id int REFERENCES stores,
     salsa_id int REFERENCES tacos,
     spiciness int
   );
+
   INSERT INTO cities (id, name, allows_drones) VALUES
   (1, 'Goleta', true),
   (2, 'Santa Barbara', true),
@@ -91,6 +106,7 @@ BEGIN;
   (16,'Fillet Mignon', false),
   (17,'Braised Artichoke', true),
   (18, 'Deep Fried Buffalo', false);
+
   INSERT INTO salsas (id, name) VALUES
   (1, 'Tomatillo Jalapeño'),
   (2, 'Chile de Arbol'),
@@ -101,13 +117,14 @@ BEGIN;
   (7, 'Salsa Don Roge'),
   (8, 'Lily''s Devil Worship'),
   (9, 'Sweet Mango and Radish');
+
   INSERT INTO car_washes(store_id, hot_wax, full_detail) VALUES
   (1, true, false),
   (9, false, false),
   (11, true, true),
   (17, true, true);
 
-  INSERT INTO store_tacos (store_id, taco_id, price) VALUES
+  INSERT INTO stores_tacos (store_id, taco_id, price) VALUES
   (1, 1, 3.50),
   (1, 2, 3.50),
   (1, 3, 3.50),
@@ -194,7 +211,7 @@ BEGIN;
   (17, 2, 4.00);
 
 
-INSERT INTO store_salsas (store_id, salsa_id, spiciness) VALUES
+INSERT INTO stores_salsas (store_id, salsa_id, spiciness) VALUES
    --Goletta
   --1. Juan's tacos #all same price, no vegetarian
   (1, 1, 5),
