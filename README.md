@@ -8,7 +8,7 @@ First create a `config/database.yml` file that's compatible with your local envi
 rake db:setup
 ```
 
-and your ready to go!
+and you're ready to go!
 
 The site is deployed at <a href='http://tacocopter.herokuapp.com'/>tacocopter.herokuapp.com</a>
 
