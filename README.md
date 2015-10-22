@@ -5,7 +5,7 @@
 First create a `config/database.yml` file that's compatible with your local environment. If you're using the Procore UDE, just copy the file from your Procore repo. Then run
 
 ```ruby
-rake 'db:setup'
+rake db:setup
 ```
 
 and your ready to go!
