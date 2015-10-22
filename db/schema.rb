@@ -65,15 +65,27 @@ ActiveRecord::Schema.define(version: 20150831035337) do
     t.integer "zagat_rating"
   end
 
+  create_table "stores_salsas", force: :cascade do |t|
+    t.integer "store_id"
+    t.integer "salsa_id"
+    t.integer "spiciness"
+  end
+
+  create_table "stores_tacos", force: :cascade do |t|
+    t.integer "store_id"
+    t.integer "taco_id"
+    t.decimal "price",    precision: 6, scale: 2
+  end
+
   create_table "tacos", force: :cascade do |t|
     t.string  "name",       limit: 255
     t.boolean "vegetarian"
   end
 
   add_foreign_key "car_washes", "stores", name: "car_washes_store_id_fkey"
-  add_foreign_key "store_salsas", "stores", name: "store_salsas_store_id_fkey"
-  add_foreign_key "store_salsas", "tacos", column: "salsa_id", name: "store_salsas_salsa_id_fkey"
-  add_foreign_key "store_tacos", "stores", name: "store_tacos_store_id_fkey"
-  add_foreign_key "store_tacos", "tacos", name: "store_tacos_taco_id_fkey"
   add_foreign_key "stores", "cities", name: "stores_city_id_fkey"
+  add_foreign_key "stores_salsas", "stores", name: "stores_salsas_store_id_fkey"
+  add_foreign_key "stores_salsas", "tacos", column: "salsa_id", name: "stores_salsas_salsa_id_fkey"
+  add_foreign_key "stores_tacos", "stores", name: "stores_tacos_store_id_fkey"
+  add_foreign_key "stores_tacos", "tacos", name: "stores_tacos_taco_id_fkey"
 end
