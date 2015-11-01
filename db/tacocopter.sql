@@ -56,7 +56,7 @@ BEGIN;
   (
     id serial PRIMARY KEY,
     store_id int REFERENCES stores,
-    salsa_id int REFERENCES tacos,
+    salsa_id int REFERENCES salsas,
     spiciness int
   );
 
