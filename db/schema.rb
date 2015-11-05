@@ -46,18 +46,6 @@ ActiveRecord::Schema.define(version: 20150831035337) do
     t.string "name", limit: 255
   end
 
-  create_table "store_salsas", force: :cascade do |t|
-    t.integer "store_id"
-    t.integer "salsa_id"
-    t.integer "spiciness"
-  end
-
-  create_table "store_tacos", force: :cascade do |t|
-    t.integer "store_id"
-    t.integer "taco_id"
-    t.decimal "price",    precision: 6, scale: 2
-  end
-
   create_table "stores", force: :cascade do |t|
     t.string  "name",         limit: 255
     t.integer "city_id"
