@@ -279,9 +279,9 @@ INSERT INTO stores_salsas (store_id, salsa_id, spiciness) VALUES
   (14, 6, 2),
   (14, 7, 7), --speciality Don Roge
   --15. Beach Liquor --same menu as Juan's, same salsas, different spiciness, different city
-  (1, 1, 6),
-  (1, 3, 6),
-  (1, 5, 7),
+  (15, 1, 6),
+  (15, 3, 6),
+  (15, 5, 7),
   --16. Don Roge #2 -- same menu plus additional
   (16, 1, 8),
   (16, 2, 8),
@@ -290,9 +290,9 @@ INSERT INTO stores_salsas (store_id, salsa_id, spiciness) VALUES
   (16, 5, 9),
   (16, 6, 2),
   --17. Tri Tip Market --same menu different city
-  (11, 1, 2), --mildest tomatillo
-  (11, 3, 2),
-  (11, 6, 2);
+  (17, 1, 2), --mildest tomatillo
+  (17, 3, 2),
+  (17, 6, 2);
 
 COMMIT;
 
