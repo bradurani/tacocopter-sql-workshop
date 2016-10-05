@@ -591,3 +591,23 @@ create_question 'City name, store name, taco name and price of most expensive ta
 ) AS sub ON stores_tacos.price = sub.highest_price
          AND cities.id = sub.city_id;"
 
+# -- window queries --
+create_question 'Ranking of tacos by price with store name, taco name and price',
+"SELECT stores.name, tacos.name, stores_tacos.price, 
+  rank() OVER (ORDER BY price) as rank
+FROM stores
+JOIN stores_tacos ON stores.id = stores_tacos.store_id
+JOIN tacos ON stores_tacos.taco_id = tacos.id
+ORDER BY price"
+
+
+# -- window queries --
+create_question 'Ranking of tacos by price with store name, taco name and price',
+"SELECT stores.name, tacos.name, stores_tacos.price, 
+  rank() OVER (PARTITION BY stores.id ORDER BY price) as rank
+FROM stores
+JOIN stores_tacos ON stores.id = stores_tacos.store_id
+JOIN tacos ON stores_tacos.taco_id = tacos.id
+ORDER BY stores.id, price;
+"
+
