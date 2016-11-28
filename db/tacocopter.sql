@@ -205,8 +205,7 @@ BEGIN;
   (16, 6, 3.25),
   (16, 7, 3.25),
   (16, 8, 3.25),
-  (16, 9, 3.25),
-  --17. Tri Tip Market --same menu different city
+  (16, 9, 3.25), --17. Tri Tip Market --same menu different city
   (17, 1, 4.50),
   (17, 2, 4.00);
 
