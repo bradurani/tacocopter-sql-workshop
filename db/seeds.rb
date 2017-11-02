@@ -360,7 +360,7 @@ create_question 'Avg price of a taco in Montecito (city id = 3)',
 "SELECT AVG(price)
  FROM stores_tacos
  JOIN stores ON stores_tacos.store_id = stores.id
- WHERE store.city_id = 3;"
+ WHERE stores.city_id = 3;"
 
  create_question 'Price of eating every taco in all cities',
  "SELECT SUM(price)
