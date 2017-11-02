@@ -378,7 +378,7 @@ create_question 'count, sum of price and avg price at every stores with a car wa
 "SELECT COUNT(*) AS num, SUM(price) AS total_price, AVG(price) AS avg_price
  FROM stores_tacos
  JOIN stores ON stores_tacos.store_id = stores.id
- JOIN cities ON stores.city_id ON cities.id
+ JOIN cities ON stores.city_id = cities.id
  JOIN car_washes ON stores.id = car_washes.store_id
  WHERE allows_drones = true;"
 
