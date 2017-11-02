@@ -320,7 +320,7 @@ q = create_question 'Cities that don&apos;t have a store',
 "SELECT *
 FROM cities
 LEFT JOIN stores
-WHERE stores.id IS NULL"
+WHERE stores.id IS NULL;"
 
 q = create_question 'Stores that don&apos;t serve an Al Pastor taco',
 "SELECT stores.*
@@ -337,10 +337,7 @@ WHERE stores_tacos.id IS NULL;"
 #                              WHERE stores_tacos.taco_id = 4
 #                            )"})
 
-create_question 'Stores that have no vegetarian tacos',
-""
-
-#--Aggregating--
+# --Aggregating--
 
 create_question 'All rows from <code>cities</code> and number of stores',
 "SELECT cities.id, cities.name, COUNT(stores.*)
