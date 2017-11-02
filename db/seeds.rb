@@ -415,7 +415,8 @@ create_question 'All fields from <code>cities</code> and number of stores',
 
 create_question '<code>id</code> and <code>name</code> from <code>cities</code> with highest Zagat rating and avgerage Zagat rating',
 "SELECT cities.id, cities.name, MAX(stores.zagat_rating) AS max_rating, AVG(stores.zagat_rating) as avg_rating
- FROM cities JOIN stores ON cities.id = stores.city_id
+ FROM cities
+ JOIN stores ON cities.id = stores.city_id
  GROUP BY cities.id;"
 
 create_question 'Store name and price of taco bonanza',
@@ -471,12 +472,22 @@ create_question 'Stores and number of vegetarian taco less than $3.50 with inclu
  JOIN stores_tacos ON stores.id = stores_tacos.store_id
  GROUP BY cities.id"
 
+# -- having --
 create_question 'City and number of stores for cities with more than 5 stores',
 "SELECT cities.name, COUNT(*) as store_count
  FROM cities
  JOIN stores ON cities.id = stores.city_id
  GROUP BY cities.id
  HAVING count(*) > 5;"
+
+create_question 'cheapest price of a taco at stores that have salsas at spiciness level >= 9 and avg taco price is less than 4.00',
+ "SELECT MIN(price)
+  FROM stores_tacos
+  JOIN stores_salsas ON stores_tacos.store_id = stores_tacos.store_id
+  WHERE stores_salsas.spiciness >= 9
+  GROUP BY stores_salsas.store_id
+  HAVING avg(price) < 4.00
+"
 
 
 #--Advanced Joining
