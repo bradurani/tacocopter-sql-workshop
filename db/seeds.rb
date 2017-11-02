@@ -399,16 +399,18 @@ create_question '<code>id</code> of city and number of stores in that city',
  FROM stores
  GROUP city_id;"
 
-create_question ''
+# -- with joins --
 
 create_question 'All fields from <code>cities</code> and number of stores',
 "SELECT cities.id, cities.name, COUNT(stores.*)
- FROM cities JOIN stores ON cities.id = stores.city_id
+ FROM cities
+ JOIN stores ON cities.id = stores.city_id
  GROUP BY cities.id;"
 
  create_question 'All rows from <code>cities</code> and number of stores including cities with zero',
 "SELECT cities.id, cities.name, COUNT(stores.*)
- FROM cities LEFT JOIN stores ON cities.id = stores.city_id
+ FROM cities
+ LEFT JOIN stores ON cities.id = stores.city_id
  GROUP BY cities.id;"
 
 create_question '<code>id</code> and <code>name</code> from <code>cities</code> with highest Zagat rating and avgerage Zagat rating',
