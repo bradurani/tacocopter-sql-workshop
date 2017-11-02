@@ -486,14 +486,27 @@ create_question 'City and number of stores for cities with more than 5 stores',
  HAVING count(*) > 5;"
 
 create_question 'cheapest price of a taco at stores that have salsas at spiciness level >= 9 and avg taco price is less than 4.00',
- "SELECT MIN(price)
-  FROM stores_tacos
-  JOIN stores_salsas ON stores_tacos.store_id = stores_tacos.store_id
-  WHERE stores_salsas.spiciness >= 9
-  GROUP BY stores_salsas.store_id
-  HAVING avg(price) < 4.00
+"SELECT stores_salsas.store_id, MIN(price)
+ FROM stores_tacos
+ JOIN stores_salsas ON stores_tacos.store_id = stores_tacos.store_id
+ WHERE stores_salsas.spiciness >= 9
+ GROUP BY stores_salsas.store_id
+ HAVING avg(price) < 4.00
 "
 
+# -- multiple conditions --
+create_question 'avg spiciness of salsas by <code>sells_beer</code> and <code>allows_drones</code>',
+"SELECT sells_beer, allows_drones, AVG(spiciness)
+ FROM cities
+ JOIN stores on stores.city_id = cities.id
+ JOIN stores_salsas ON stores_salsas.store_id = stores.id
+ GROUP BY sells_beer, allows_drones;"
+
+ create_question 'avg zagat rating by city and sells_beer',
+ "SELECT city_id, sells_beer, AVG(zagat_rating)
+  FROM stores
+  JOIN cities ON cities.id = stores.city_id
+  GROUP BY city_id, sells_beer;"
 
 #--Advanced Joining
 
