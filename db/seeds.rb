@@ -406,13 +406,13 @@ create_question 'min price, max price, avg price, sum price and count of tacos b
 
 # -- with joins --
 
-create_question 'All fields from <code>cities</code> and number of stores',
+create_question '<code>id</code> and <code>name</code> from <code>cities</code> and number of stores',
 "SELECT cities.id, cities.name, COUNT(stores.*)
  FROM cities
  JOIN stores ON cities.id = stores.city_id
  GROUP BY cities.id;"
 
- create_question 'All rows from <code>cities</code> and number of stores including cities with zero',
+ create_question '<code>id</code> and <code>name</code> from <code>cities</code> and number of stores including cities with zero',
 "SELECT cities.id, cities.name, COUNT(stores.*)
  FROM cities
  LEFT JOIN stores ON cities.id = stores.city_id
