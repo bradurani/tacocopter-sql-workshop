@@ -295,7 +295,7 @@ create_question 'Store <code>name</code> and price of Al Pastor if they have it 
 "SELECT stores.name, stores_tacos.price
 FROM stores
 LEFT JOIN stores_tacos ON stores.id = stores_tacos.store_id
-                       AND stores_tacos.taco_id = 1;
+                       AND stores_tacos.taco_id = 1
                        AND stores_tacos.price < 3.00;"
 
 create_question 'Store <code>name</code>, <code>hot_wax</code> and price of Al Pastor taco if they have it',
@@ -421,9 +421,9 @@ create_question 'Stores with carne asada tacos and chili de arbol salsa',
 "SELECT DISTINCT stores.*
  FROM stores
  JOIN stores_tacos ON stores.id = stores_tacos.store_id
-                  AND stores_tacos.taco_id = 1
+                   AND stores_tacos.taco_id = 1
  JOIN stores_salsas ON stores.id = stores_salsas.store_id
-                   AND stores_salsas.salsa_id = 3;"
+                    AND stores_salsas.salsa_id = 3;"
 
 create_question 'Stores with carne asada tacos and pollo tacos',
 "SELECT DISTINCT stores.*
