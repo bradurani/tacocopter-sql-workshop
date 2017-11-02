@@ -392,12 +392,12 @@ create_question 'count of stores that do and do not sell beer',
 create_question 'count of cites that do and no not allow drones',
 "SELECT allows_drones, COUNT(*)
  FROM cities
- GROUP BY allow_drones;"
+ GROUP BY allows_drones;"
 
 create_question '<code>id</code> of city and number of stores in that city',
 "SELECT city_id, COUNT(*)
  FROM stores
- GROUP city_id;"
+ GROUP BY city_id;"
 
 # -- with joins --
 
