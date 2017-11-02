@@ -319,7 +319,7 @@ q = create_question 'Store name for stores that don&apos;t have a car wash',
 q = create_question 'Cities that don&apos;t have a store',
 "SELECT *
 FROM cities
-LEFT JOIN stores
+LEFT JOIN stores ON cities.id = stores.city_id
 WHERE stores.id IS NULL;"
 
 q = create_question 'Stores that don&apos;t serve an Al Pastor taco',
