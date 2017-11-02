@@ -338,8 +338,70 @@ WHERE stores_tacos.id IS NULL;"
 #                            )"})
 
 # --Aggregating--
+create_question 'Count of all stores in all cities',
+"SELECT COUNT(*)
+ FROM stores;"
 
-create_question 'All rows from <code>cities</code> and number of stores',
+create_question "Count of all tacos sold in all cities",
+"SELECT COUNT(*)
+ FROM stores_tacos;"
+
+create_question 'Avg price of a taco in from all cities',
+"SELECT AVG(price)
+ FROM stores_tacos;"
+
+create_question 'Avg price of a taco at Juan\'s tacos (store id = 1)',
+"SELECT AVG(price)
+ FROM stores_tacos
+ WHERE store_id = 1;"
+
+# -- Aggregate with join --
+create_question 'Avg price of a taco in Montecito (city id = 3)',
+"SELECT AVG(price)
+ FROM stores_tacos
+ JOIN stores ON stores_tacos.store_id = stores.id
+ WHERE store.city_id = 3;"
+
+ create_question 'Price of eating every taco in all cities',
+ "SELECT SUM(price)
+  FROM stores_tacos;"
+
+ create_question 'Cost of eating every vegetarian taco in every store that sells beer in all cities',
+ "SELECT SUM(price)
+  FROM stores_tacos
+  JOIN tacos ON stores_tacos.taco_id = tacos.id
+  JOIN stores ON stores_tacos.store_id = stores.id
+  WHERE tacos.vegetarian = true
+  AND stores.sells_beer = true;"
+
+create_question 'count, sum of price and avg price at every stores with a car wash in a city that allows drones',
+"SELECT COUNT(*) AS num, SUM(price) AS total_price, AVG(price) AS avg_price
+ FROM stores_tacos
+ JOIN stores ON stores_tacos.store_id = stores.id
+ JOIN cities ON stores.city_id ON cities.id
+ JOIN car_washes ON stores.id = car_washes.store_id
+ WHERE allows_drones = true;"
+
+# -- group by --
+
+create_question 'count of stores that do and do not sell beer',
+"SELECT sells_beer, COUNT(*)
+ FROM stores
+ GROUP BY sells_beer"
+
+create_question 'count of cites that do and no not allow drones',
+"SELECT allows_drones, COUNT(*)
+ FROM cities
+ GROUP BY allow_drones;"
+
+create_question '<code>id</code> of city and number of stores in that city',
+"SELECT city_id, COUNT(*)
+ FROM stores
+ GROUP city_id;"
+
+create_question ''
+
+create_question 'All fields from <code>cities</code> and number of stores',
 "SELECT cities.id, cities.name, COUNT(stores.*)
  FROM cities JOIN stores ON cities.id = stores.city_id
  GROUP BY cities.id;"
