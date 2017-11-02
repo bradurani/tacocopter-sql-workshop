@@ -399,6 +399,11 @@ create_question '<code>id</code> of city and number of stores in that city',
  FROM stores
  GROUP BY city_id;"
 
+create_question 'min price, max price, avg price, sum price and count of tacos by store id',
+"SELECT store_id, MIN(price), MAX(price), AVG(price), COUNT(*)
+ FROM stores_tacos
+ GROUP BY store_id;"
+
 # -- with joins --
 
 create_question 'All fields from <code>cities</code> and number of stores',
